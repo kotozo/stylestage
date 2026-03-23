@@ -1,7 +1,7 @@
 /*
- * [Modified] Modern CSS Reset
- * @link https://github.com/hankchizljaw/modern-css-reset
-*/
+ * Modern CSS Reset (Updated)
+ * Based on https://github.com/hankchizljaw/modern-css-reset
+ */
 
 /* Box sizing rules */
 *,
@@ -11,46 +11,52 @@
 }
 
 /* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:where(body, h1, h2, h3, h4, h5, h6, p, figure, blockquote) {
   margin: 0;
 }
 
 html {
   overflow-x: hidden;
+  text-size-adjust: 100%;
 }
 
-/* Set core body defaults */
+/* Core body defaults */
 body {
   min-height: 100vh;
   font-size: 100%;
   line-height: 1.5;
-  text-rendering: optimizeSpeed;
+  font-family: system-ui, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
   overflow-x: hidden;
 }
 
-/* Make images easier to work with */
-img {
+/* Media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-/* Inherit fonts for inputs and buttons */
+/* Form elements inherit typography */
 input,
 button,
 textarea,
 select {
   font: inherit;
+  color: inherit;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
+/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

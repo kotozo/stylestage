@@ -1,7 +1,12 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:string";
+
+/* Brand colors */
 $color-primary: #3a00ff !default;
 $color-primary-alt: #6f6ffd !default;
-$color-secondary: #FF331F !default; /* updated color */
-$color-background: #657ED4 !default; /* updated color */
+$color-secondary: #FF331F !default;
+$color-background: #657ED4 !default;
 
 $brand-colors: (
   primary: $color-primary,
@@ -9,14 +14,17 @@ $brand-colors: (
   secondary: $color-secondary,
 ) !default;
 
-$color-body: scale-color(
+/* Derived colors */
+$color-body: color.scale(
   $color-primary,
   $lightness: -30%,
   $saturation: -50%
 ) !default;
-$color-gray: mix(#767676, $color-body, 70%) !default;
 
-$colors: map-merge(
+$color-gray: color.mix(#767676, $color-body, 70%) !default;
+
+/* Color map */
+$colors: map.merge(
   $brand-colors,
   (
     background: $color-background,
@@ -25,18 +33,22 @@ $colors: map-merge(
   )
 );
 
+/* Color getter */
 @function color($key) {
-  @return map-get($colors, $key);
+  @return map.get($colors, $key);
 }
 
+/* SVG-safe hex color (encode # as %23) */
 @function svgColor($color) {
-  @return "%23" + str-slice("#{color($color)}", 2, -1);
+  @return "%23" + string.slice("#{color($color)}", 2);
 }
 
+/* Tokens */
 $link-color: color(primary) !default;
 $border-radius: 8px !default;
 
 $font-weight-strong: 500 !default;
+
 $font-size-h1: 6rem !default;
 $font-size-h2: 3rem !default;
 $font-size-h3: 2rem !default;
@@ -51,10 +63,10 @@ $font-sizes: (
   text: $font-size-text,
 );
 
-// stylelint-disable
+/* CSS Custom Properties */
 :root {
-  @each $key, $color in $colors {
-    --color-#{$key}: #{$color};
+  @each $key, $value in $colors {
+    --color-#{$key}: #{$value};
   }
 
   --color-anchor: #{$link-color};
