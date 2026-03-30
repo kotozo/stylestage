@@ -1,0 +1,15 @@
+/* Keep motion accessible */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Slight interaction for button-links only */
+.link-github,
+.link-guidelines,
+.link-downloadcss,
+.link-downloadhtml,
+.link-codepen,
+.link-allstyles {
+  transition: transform 140ms ease, background 180ms ease, box-shadow 180ms ease;
+}

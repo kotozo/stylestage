@@ -1,0 +1,2 @@
+/* A simple flow utility for vertical rhythm */
+.flow > * + * { margin-top: var(--s2); }

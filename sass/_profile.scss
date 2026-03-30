@@ -1,0 +1,39 @@
+aside.profile > .container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1rem, 2vw, 1.4rem);
+  box-shadow: var(--shadow-1);
+}
+
+aside.profile h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+aside.profile ul {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--s2);
+}
+
+aside.profile li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 0.5rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(17,24,39,0.08);
+}
+
+aside.profile li:last-child { border-bottom: none; }
+
+aside.profile li span:first-child {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+aside.profile a {
+  display: inline-flex;
+  margin-top: var(--s2);
+  font-weight: 800;
+}

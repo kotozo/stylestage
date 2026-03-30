@@ -1,0 +1,46 @@
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+}
+
+header h2 {
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  color: var(--muted);
+  margin-top: var(--s1);
+}
+
+main h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+}
+
+main h3 {
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+}
+
+p {
+  margin-top: var(--s1);
+  color: var(--text);
+}
+
+p + p { margin-top: var(--s2); }
+
+small, .muted { color: var(--muted); }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+blockquote {
+  margin-top: var(--s3);
+  padding: var(--s3);
+  border-left: 6px solid var(--accent);
+  background: linear-gradient(90deg, rgba(255,77,46,0.08), rgba(255,77,46,0.02));
+  border-radius: var(--radius-sm);
+}
+blockquote p { margin-top: 0; }

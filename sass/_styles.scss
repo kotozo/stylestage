@@ -1,0 +1,58 @@
+aside#styles > .container {
+  margin-top: var(--s4);
+}
+
+aside#styles h2 {
+  margin-bottom: var(--s2);
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--s2);
+}
+
+@media (min-width: 48rem) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.features li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  box-shadow: var(--shadow-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.features li::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0.35rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.features a {
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.features a:hover { text-decoration: underline; }
+
+.features span > span {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.link-allstyles {
+  margin-top: var(--s3);
+  width: fit-content;
+}

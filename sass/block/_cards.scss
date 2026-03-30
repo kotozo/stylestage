@@ -1,0 +1,30 @@
+main {
+  background: transparent;
+}
+
+/* Each inner “section.container” becomes a card */
+main article > .container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  box-shadow: var(--shadow-1);
+  margin-top: var(--s3);
+}
+
+/* Add subtle header accent */
+main article > .container > h2 {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+main article > .container > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.25rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--accent);
+}

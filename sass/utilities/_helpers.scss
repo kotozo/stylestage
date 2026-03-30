@@ -1,0 +1,15 @@
+/* Tighten lists in cards */
+main ul, main ol {
+  margin-top: var(--s2);
+}
+
+main li + li { margin-top: 0.25rem; }
+
+/* Make the "main" focus target visible for keyboard users */
+#main:focus {
+  outline: none;
+}
+#main:focus-visible {
+  box-shadow: var(--focus);
+  border-radius: var(--radius);
+}

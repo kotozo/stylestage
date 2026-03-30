@@ -1,0 +1,12 @@
+/* Minimal reset (safe for semantic HTML) */
+*, *::before, *::after { box-sizing: border-box; }
+
+body, h1, h2, h3, h4, p, ul, ol, blockquote {
+  margin: 0;
+}
+
+ul, ol {
+  padding-left: 1.25rem;
+}
+
+a { color: inherit; }

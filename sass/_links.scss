@@ -1,0 +1,52 @@
+a {
+  color: var(--link);
+  text-underline-offset: 0.14em;
+  text-decoration-thickness: 2px;
+}
+
+a:hover { color: var(--link-hover); }
+
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: 0.4rem;
+}
+
+/* “Button links” present in your HTML */
+.link-github,
+.link-guidelines,
+.link-downloadcss,
+.link-downloadhtml,
+.link-codepen,
+.link-allstyles {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: var(--shadow-1);
+}
+
+.link-github:hover,
+.link-guidelines:hover,
+.link-downloadcss:hover,
+.link-downloadhtml:hover,
+.link-codepen:hover,
+.link-allstyles:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--accent-ink);
+  transform: translateY(-1px);
+}
+
+.link-github:focus-visible,
+.link-guidelines:focus-visible,
+.link-downloadcss:focus-visible,
+.link-downloadhtml:focus-visible,
+.link-codepen:focus-visible,
+.link-allstyles:focus-visible {
+  box-shadow: var(--focus), var(--shadow-1);
+}

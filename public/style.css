@@ -1,80 +1,577 @@
-/* updated color */
-/* updated color */
+@charset "UTF-8";
+/* Design tokens (SCSS + CSS custom properties) */
 :root {
-  --color-primary: #3a00ff;
-  --color-primary-alt: #6f6ffd;
-  --color-secondary: #FF331F;
-  --color-background: #657ED4;
-  --color-text: rgb(64.925, 44.625, 133.875);
-  --color-light: #fff;
-  --color-anchor: #3a00ff;
-  --font-family: "Baloo 2", sans-serif;
-  --font-weight-strong: 500;
-  --font-size-h1: 6rem;
-  --font-size-h2: 3rem;
-  --font-size-h3: 2rem;
-  --font-size-h4: 1.35rem;
-  --font-size-text: 1.15rem;
-  --border-radius: 8px;
+  /* Colors */
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(17, 24, 39, 0.12);
+  --accent: #ff4d2e; /* wireframe uses a bright orange/red accent */
+  --accent-2: #ff7a59;
+  --accent-ink: #ffffff;
+  --link: #0f4c81;
+  --link-hover: #0b3a63;
+  /* Type */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  /* Spacing scale */
+  --s-1: 0.25rem;
+  --s0: 0.5rem;
+  --s1: 0.75rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 2rem;
+  --s5: 3rem;
+  --s6: 4rem;
+  /* Layout */
+  --container: 72rem;
+  --gutter: clamp(1rem, 3vw, 1.75rem);
+  /* Radius & shadow */
+  --radius: 0.9rem;
+  --radius-sm: 0.6rem;
+  --shadow-1: 0 10px 25px rgba(17, 24, 39, 0.10);
+  --shadow-2: 0 18px 40px rgba(17, 24, 39, 0.14);
+  /* Focus */
+  --focus: 0 0 0 3px rgba(255, 77, 46, 0.35);
 }
 
-/*
- * [Modified] Modern CSS Reset
- * @link https://github.com/hankchizljaw/modern-css-reset
-*/
-/* Box sizing rules */
-*,
-*::before,
-*::after {
+/* Breakpoint helpers */
+html {
+  color-scheme: light;
+  hanging-punctuation: first last;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+/* Make images, svgs behave */
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global selection */
+::selection {
+  background: rgba(255, 77, 46, 0.22);
+}
+
+/* Minimal reset (safe for semantic HTML) */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+body, h1, h2, h3, h4, p, ul, ol, blockquote {
   margin: 0;
 }
 
-html {
-  overflow-x: hidden;
+ul, ol {
+  padding-left: 1.25rem;
 }
 
-/* Set core body defaults */
+a {
+  color: inherit;
+}
+
+/* Using system fonts by default for speed (3s load guideline-friendly).
+   You can swap to external fonts if desired. */
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+}
+
+header h2 {
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  color: var(--muted);
+  margin-top: var(--s1);
+}
+
+main h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+}
+
+main h3 {
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+}
+
+p {
+  margin-top: var(--s1);
+  color: var(--text);
+}
+
+p + p {
+  margin-top: var(--s2);
+}
+
+small, .muted {
+  color: var(--muted);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+blockquote {
+  margin-top: var(--s3);
+  padding: var(--s3);
+  border-left: 6px solid var(--accent);
+  background: linear-gradient(90deg, rgba(255, 77, 46, 0.08), rgba(255, 77, 46, 0.02));
+  border-radius: var(--radius-sm);
+}
+
+blockquote p {
+  margin-top: 0;
+}
+
+.container {
+  padding-inline: var(--gutter);
+}
+
+/* Only top-level containers are width-limited */
+header > .container,
+main > .container,
+aside > .container,
+footer > .container,
+nav > ul {
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+/* Body layout: header/nav full, then main + profile sidebar on desktop */
 body {
-  min-height: 100vh;
-  font-size: 100%;
-  line-height: 1.5;
-  text-rendering: optimizeSpeed;
-  overflow-x: hidden;
+  display: grid;
+  grid-template-areas: "skip" "header" "nav" "main" "profile" "styles" "footer";
+  grid-template-columns: 1fr;
 }
 
-/* Make images easier to work with */
-img {
+header {
+  grid-area: header;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: main;
+}
+
+aside.profile {
+  grid-area: profile;
+}
+
+aside#styles {
+  grid-area: styles;
+}
+
+footer.page-footer {
+  grid-area: footer;
+}
+
+/* Desktop: main + profile side-by-side like wireframe sidebar */
+@media (min-width: 64rem) {
+  body {
+    grid-template-areas: "skip skip" "header header" "nav nav" "main profile" "styles styles" "footer footer";
+    grid-template-columns: 2fr 1fr;
+    column-gap: clamp(1rem, 2.5vw, 2rem);
+  }
+  main {
+    padding-bottom: var(--s5);
+  }
+  aside.profile {
+    align-self: start;
+  }
+}
+/* Sections spacing */
+header, main, aside, footer {
+  padding-block: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* Header hero (text left, visual right block) */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+header > .container {
+  display: grid;
+  gap: var(--s3);
+  align-items: center;
+}
+
+/* Simulate the right hero panel seen in wireframe without changing HTML */
+header > .container::after {
+  content: "";
   display: block;
-  max-width: 100%;
+  border-radius: var(--radius);
+  min-height: clamp(7rem, 18vw, 12rem);
+  background: linear-gradient(135deg, rgba(255, 77, 46, 0.95), rgba(255, 122, 89, 0.92)), radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.18), transparent 55%);
+  box-shadow: var(--shadow-1);
 }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
+@media (min-width: 48rem) {
+  header > .container {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
+}
+/* Nav (horizontal bar like wireframe) */
+nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+nav a {
+  display: inline-flex;
+  padding: 0.85rem 0.9rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text);
+  border-radius: 999px;
+}
+
+nav a:hover {
+  background: rgba(15, 76, 129, 0.08);
+  color: var(--link-hover);
+}
+
+nav a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  background: rgba(255, 77, 46, 0.1);
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.14em;
+  text-decoration-thickness: 2px;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: 0.4rem;
+}
+
+/* “Button links” present in your HTML */
+.link-github,
+.link-guidelines,
+.link-downloadcss,
+.link-downloadhtml,
+.link-codepen,
+.link-allstyles {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: var(--shadow-1);
+}
+
+.link-github:hover,
+.link-guidelines:hover,
+.link-downloadcss:hover,
+.link-downloadhtml:hover,
+.link-codepen:hover,
+.link-allstyles:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--accent-ink);
+  transform: translateY(-1px);
+}
+
+.link-github:focus-visible,
+.link-guidelines:focus-visible,
+.link-downloadcss:focus-visible,
+.link-downloadhtml:focus-visible,
+.link-codepen:focus-visible,
+.link-allstyles:focus-visible {
+  box-shadow: var(--focus), var(--shadow-1);
+}
+
+.link-github svg,
+.page-footer .link-github svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;
+}
+
+.link-github span svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* A simple flow utility for vertical rhythm */
+.flow > * + * {
+  margin-top: var(--s2);
+}
+
+/* generic grid helper if you want to opt-in */
+.grid {
+  display: grid;
+  gap: var(--s3);
+}
+
+/* Keep motion accessible */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* Slight interaction for button-links only */
+.link-github,
+.link-guidelines,
+.link-downloadcss,
+.link-downloadhtml,
+.link-codepen,
+.link-allstyles {
+  transition: transform 140ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+main {
+  background: transparent;
+}
+
+/* Each inner “section.container” becomes a card */
+main article > .container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  box-shadow: var(--shadow-1);
+  margin-top: var(--s3);
+}
+
+/* Add subtle header accent */
+main article > .container > h2 {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+main article > .container > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.25rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  padding: 0.7rem 0.95rem;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 160ms ease;
+  z-index: 999;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  box-shadow: var(--shadow-2);
+}
+
+/* Tighten lists in cards */
+main ul, main ol {
+  margin-top: var(--s2);
+}
+
+main li + li {
+  margin-top: 0.25rem;
+}
+
+/* Make the "main" focus target visible for keyboard users */
+#main:focus {
+  outline: none;
+}
+
+#main:focus-visible {
+  box-shadow: var(--focus);
+  border-radius: var(--radius);
+}
+
+/* About section specific tweaks */
+#about a {
+  font-weight: 650;
+}
+
+/* Make the TL;DR stand out slightly */
+#guidelines h3 {
+  margin-top: var(--s2);
+  color: var(--text);
+}
+
+#guidelines .link-guidelines {
+  margin-top: var(--s3);
+}
+
+#contribute ol {
+  margin-top: var(--s2);
+}
+
+#contribute ol li {
+  padding-left: 0.25rem;
+}
+
+#files .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Footer inside contribute (Source Files) */
+#files {
+  margin-top: var(--s4);
+}
+
+#files h3 {
+  margin-right: auto;
+}
+
+aside.profile > .container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1rem, 2vw, 1.4rem);
+  box-shadow: var(--shadow-1);
+}
+
+aside.profile h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+aside.profile ul {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--s2);
+}
+
+aside.profile li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 0.5rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+aside.profile li:last-child {
+  border-bottom: none;
+}
+
+aside.profile li span:first-child {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+aside.profile a {
+  display: inline-flex;
+  margin-top: var(--s2);
+  font-weight: 800;
+}
+
+aside#styles > .container {
+  margin-top: var(--s4);
+}
+
+aside#styles h2 {
+  margin-bottom: var(--s2);
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--s2);
+}
+
+@media (min-width: 48rem) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.features li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  box-shadow: var(--shadow-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.features li::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0.35rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.features a {
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.features a:hover {
+  text-decoration: underline;
+}
+
+.features span > span {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.link-allstyles {
+  margin-top: var(--s3);
+  width: fit-content;
 }
 
 /*# sourceMappingURL=style.css.map */

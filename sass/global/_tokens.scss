@@ -1,0 +1,49 @@
+/* Design tokens (SCSS + CSS custom properties) */
+:root {
+  /* Colors */
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(17, 24, 39, 0.12);
+
+  --accent: #ff4d2e; /* wireframe uses a bright orange/red accent */
+  --accent-2: #ff7a59;
+  --accent-ink: #ffffff;
+
+  --link: #0f4c81;
+  --link-hover: #0b3a63;
+
+  /* Type */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  /* Spacing scale */
+  --s-1: 0.25rem;
+  --s0: 0.5rem;
+  --s1: 0.75rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 2rem;
+  --s5: 3rem;
+  --s6: 4rem;
+
+  /* Layout */
+  --container: 72rem;
+  --gutter: clamp(1rem, 3vw, 1.75rem);
+
+  /* Radius & shadow */
+  --radius: 0.9rem;
+  --radius-sm: 0.6rem;
+  --shadow-1: 0 10px 25px rgba(17, 24, 39, 0.10);
+  --shadow-2: 0 18px 40px rgba(17, 24, 39, 0.14);
+
+  /* Focus */
+  --focus: 0 0 0 3px rgba(255, 77, 46, 0.35);
+}
+
+/* Breakpoint helpers */
+$bp-md: 48rem;  // 768px
+$bp-lg: 64rem;  // 1024px
