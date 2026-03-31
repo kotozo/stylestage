@@ -56,3 +56,22 @@ aside#styles h2 {
   margin-top: var(--s3);
   width: fit-content;
 }
+
+
+.features li {
+  padding: 1.25rem;
+}
+
+.features a {
+  display: inline-block;
+  font-size: 1.05rem;
+}
+
+.features li:hover {
+  transform: translateY(-2px);
+  transition: transform 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .features li:hover { transform: none; }
+}

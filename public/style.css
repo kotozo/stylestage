@@ -299,12 +299,6 @@ nav a:focus-visible {
   background: rgba(255, 77, 46, 0.1);
 }
 
-@media (min-width: 64rem) {
-  aside.profile {
-    position: sticky;
-    top: 5rem; /* accounts for sticky nav */
-  }
-}
 a {
   color: var(--link);
   text-underline-offset: 0.14em;
@@ -432,16 +426,6 @@ main article > .container > h2::after {
   height: 0.28rem;
   border-radius: 999px;
   background: var(--accent);
-}
-
-main article > .container {
-  margin-top: clamp(1rem, 2vw, 1.5rem);
-  padding: clamp(1.1rem, 2.2vw, 1.75rem);
-}
-
-/* Improve readability like the wireframe */
-main article > .container p {
-  max-width: 70ch;
 }
 
 .skip-link {
@@ -621,26 +605,6 @@ aside#styles h2 {
 .link-allstyles {
   margin-top: var(--s3);
   width: fit-content;
-}
-
-.features li {
-  padding: 1.25rem;
-}
-
-.features a {
-  display: inline-block;
-  font-size: 1.05rem;
-}
-
-.features li:hover {
-  transform: translateY(-2px);
-  transition: transform 160ms ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .features li:hover {
-    transform: none;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */
