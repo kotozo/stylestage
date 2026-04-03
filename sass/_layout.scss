@@ -107,7 +107,7 @@ header > .container {
 }
 
 /* Simulate the right hero panel seen in wireframe without changing HTML */
-header > .container::after {
+/*header > .container::after {
   content: "";
   display: block;
   border-radius: var(--radius);
@@ -117,12 +117,231 @@ header > .container::after {
     radial-gradient(circle at 25% 25%, rgba(255,255,255,0.18), transparent 55%);
   box-shadow: var(--shadow-1);
 }
+  
 
 @media (min-width: t.$bp-md) {
   header > .container {
     grid-template-columns: 1.25fr 0.75fr;
   }
 }
+*/
+/* my update of 04/04/2026 of the header hero block to be more mock-aligned and less abstract */
+/* Header hero (simple, mock-aligned) */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  
+}
+
+header > .container {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding-block: clamp(2rem, 5vw, 4rem)
+  
+}
+
+/* Make sure ALL header text content stays on the LEFT column */
+header > .container > h1,
+header > .container > h2,
+header > .container > p,
+header > .container > a.link-github {
+  grid-column: 1;
+}
+
+/* Right-side hero placeholder becomes the SECOND column item 
+header > .container::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / -1; 
+  justify-self: end;
+  align-self: center;
+
+  width: clamp(220px, 34vw, 420px);
+  aspect-ratio: 4 / 3;
+
+  background: #ff6a4d; 
+  border-radius: 0.25rem;
+
+  
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+*/
+
+/* Right-side hero placeholder with airplane SVG */
+header > .container::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / -1;
+  justify-self: end;
+  align-self: center;
+
+  width: clamp(220px, 34vw, 420px);
+  aspect-ratio: 4 / 3;
+
+  border-radius: 0.25rem;
+  background-color: #ff4d2e; /* your accent */
+
+  /* Airplane SVG on top of the accent background */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 200'%3E%3Cpath fill='%23ffffff' d='M10 100 L260 100 L400 40 L430 40 L320 110 L430 160 L400 160 L260 120 L10 120 Z'/%3E%3C/svg%3E");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80% auto;
+
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+header > .container::after {
+  /* keep everything above... */
+  transform: rotate(-6deg);
+}
+
+header > .container::after {
+  /* block styling */
+  background-color: #ff4d2e;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80% auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 200'%3E%3Cg transform='rotate(-10 320 100)'%3E%3Cpath fill='%23ffffff' d='M10 100 L260 100 L400 40 L430 40 L320 110 L430 160 L400 160 L260 120 L10 120 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+header > .container::after {
+  background-color: #ff4d2e;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 200'%3E%3Cpath fill='%23ffffff' d='M10 100 L260 100 L400 40 L430 40 L320 110 L430 160 L400 160 L260 120 L10 120 Z'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 18% 30%, rgba(255,255,255,0.25) 0 10px, transparent 11px),
+    radial-gradient(circle at 78% 25%, rgba(255,255,255,0.18) 0 14px, transparent 15px);
+
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: center, 18% 30%, 78% 25%;
+  background-size: 80% auto, auto, auto;
+}
+
+
+/* Animate the airplane placeholder gently (only if motion is allowed) */
+@media (prefers-reduced-motion: no-preference) {
+  header > .container::after {
+    animation: plane-float 10s ease-in-out infinite;
+    transform-origin: 50% 60%;
+    will-change: transform;
+  }
+}
+
+@keyframes plane-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1.25deg);
+  }
+}
+/*
+@keyframes plane-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  35%      { transform: translateY(-8px) rotate(-1deg); }
+  70%      { transform: translateY(-3px) rotate(0.6deg); }
+}
+
+*/
+
+
+@media (prefers-reduced-motion: reduce) {
+  header > .container::after {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Desktop grid */
+@media (min-width: t.$bp-md) {
+  header > .container {
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-rows: auto auto 1fr auto; 
+    /* h1, h2, p, button */
+  }
+
+  /* Place items explicitly to match the mock */
+  header > .container > h1 { grid-row: 1; }
+  header > .container > h2 { grid-row: 2;}
+  header > .container > p  { grid-row: 3; }
+
+  header > .container > h2 {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+  /* Button at the bottom of the left side */
+  header > .container > a.link-github {
+    grid-row: 4;
+    justify-self: start;
+    align-self: end;
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile: stack everything; placeholder goes BELOW text */
+@media (max-width: t.$bp-md) {
+  header > .container {
+    grid-template-columns: 1fr;
+  }
+
+  header > .container::after {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: center;
+    width: min(420px, 100%);
+    margin-top: 1.5rem;
+  }
+}
+
+
+
+
+
+
+/* Desktop two-column layout x
+@media (min-width: t.$bp-md) {
+  header > .container {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+*/
+
+/* Right-side hero block (mock image placeholder) 
+header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 6vw, 5rem);
+  transform: translateY(-50%);
+
+  width: clamp(220px, 34vw, 420px);
+  aspect-ratio: 4 / 3;
+
+  background-color: #ff6a4d;
+  border-radius: 0.25rem;
+}
+
+
+@media (max-width: t.$bp-md) {
+  header::after {
+    position: relative;
+    inset: auto;
+    transform: none;
+    margin: 2rem auto 0;
+  }
+}
+
+header::after {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+
+
+}
+*/
+/* End of header hero block updates 04/04/2026 */ 
+
 
 /* Nav (horizontal bar like wireframe) */
 nav {
