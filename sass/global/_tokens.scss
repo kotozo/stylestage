@@ -12,7 +12,8 @@
   --accent-ink: #ffffff;
 
   --link: #0f4c81;
-  --link-hover: #0b3a63;
+  /*--link-hover: #0b3a63;*/
+  --link-hover: #ffffff; /* changed to white for better contrast on accent hover */
 
   /* Type */
   --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,

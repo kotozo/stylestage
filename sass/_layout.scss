@@ -64,7 +64,7 @@ body {
   grid-template-columns: 1fr;
 }
 
-header { grid-area: header; }
+header { grid-area: header; } 
 nav { grid-area: nav; }
 main { grid-area: main; }
 aside.profile { grid-area: profile; }
@@ -373,7 +373,8 @@ nav a {
 }
 
 nav a:hover {
-  background: rgba(15, 76, 129, 0.08);
+  /*background: rgba(15, 76, 129, 0.08);*/
+  background: #ff4d2e; /* accent color with subtle opacity for hover */
   color: var(--link-hover);
 }
 

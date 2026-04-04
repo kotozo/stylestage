@@ -11,7 +11,8 @@
   --accent-2: #ff7a59;
   --accent-ink: #ffffff;
   --link: #0f4c81;
-  --link-hover: #0b3a63;
+  /*--link-hover: #0b3a63;*/
+  --link-hover: #ffffff; /* changed to white for better contrast on accent hover */
   /* Type */
   --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
     Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -487,7 +488,8 @@ nav a {
 }
 
 nav a:hover {
-  background: rgba(15, 76, 129, 0.08);
+  /*background: rgba(15, 76, 129, 0.08);*/
+  background: #ff4d2e; /* accent color with subtle opacity for hover */
   color: var(--link-hover);
 }
 
